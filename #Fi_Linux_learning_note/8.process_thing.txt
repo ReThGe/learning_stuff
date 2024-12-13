@@ -1,0 +1,41 @@
+every time you start linux, there goes process automaticly
+
+and the process that not lauched by user, mostly daemon-thing, 
+like background services, ssh, printing, networking...
+
+a daemon service will have a "d" at the end, like sshd
+
+systemd is the master of all daemon, service manager, init system
+boot --> kernel --> systemd --> mount file sys/ start daemon
+so the systemd is the first daemon, and it forked to lauch other daemon
+
+and systemctl, can provide the control of systemd, and systemd call other daemon "units"
+
+systemctl status/stop/start/restart/reload/disable/enable/is-active/is-enable [service]
+
+sudo systemctl list-units/list-unit-files
+
+=====================================
+processes manage:
+
+ps -u(user)
+
+kill command: kill [PID] or pgrep [processname] --> return PID --> and kill
+kill --> signal, "kill -l" to see all the possiable signal can send
+kill -19(signal id) [PID]
+default signal is 15) SIGTERM, this is soft kill, ask process to die nicely, if they don't 
+want, it's okay
+ctrl+z, is kill signal 19) SIGSTOP, and hit ctrl+z again, send signal 18) SIGCONT
+ctrl+c, is kill signal 2) SIGINT
+
+the real kill signal: 9) SIGKILL
+and "pkill -9 [name]" will kill 
+
+foreground vs background process:
+ctrl + z will put process into background
+and type jobs to see the process
+and type bg 1, to see bg process at foreground but can't manipulate
+and type fg 1, to switch bg process into foreground, and can manipulate
+
+and by adding {&} sign at the end of a command, you put this job into bg
+and can't interact with

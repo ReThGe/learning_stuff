@@ -1,0 +1,6 @@
+1969，UNIX操作系统诞生，贝尔实验室Ken Thompson和Dennis Ritchie
+这两人也创造了C语言，1972，1973用C改写了UNIX系统
+
+GNU是一个计划，“GNU's not unix”，G是自由软件基金会（FSF）创建的一个计划，由Richard Stallman在1984年公开发起的，目标是建立一套完全自由的和可移植的类Unix操作系统
+为了实现自由软件的目标，GNU项目开发了许多自由软件的工具和应用程序，如GCC编译器、Emacs文本编辑器、GDB调试器等。其中，GCC编译器是GNU项目中最著名的工具之一，它是一个能够编译多种编程语言的编译器，被广泛用于自由软件开发中。
+但是GNU操作系统一直没有一个成熟的内核。直到Linus Torvalds开发了Linux内核后，GNU项目才得以将Linux内核与GNU工具结合起来，形成了现在的GNU/Linux操作系统。

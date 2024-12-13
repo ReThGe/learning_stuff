@@ -1,0 +1,26 @@
+install packages --> using package manager(pm)
+two main pm: dpkg and apt, others like gem(for ruby programming language)/wget/curl...
+	apt: advanced packge tool
+dpkg, low level, kinda dummy, you will first download pkg file, and go back to shell to install:
+sudo dpkg -i [pkg.deb]  --> and you will have dependency problem
+
+sudo apt update --> always do this to update the repository, make sure we have new stuff
+sudo apt upgrade/full-upgrade [xxx]
+
+
+to edit the repo(nano is good):
+sudo apt edit-sources
+
+apt list --installed | grep ^nmap
+apt show/search nmap
+
+sudo apt remove/purge [xxx] (purge remove user data as well)
+
+aptitude(fancy)
+
+====================================
+another one: snap (more newer app that haven't upload to apt repo)
+sudo snap install --classic [xxx] (vscode == code)
+
+also pip3/gem install 
+and git clone [url]

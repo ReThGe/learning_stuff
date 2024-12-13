@@ -1,0 +1,112 @@
+pwd: print working directory	|  ls: list -a, -h, -l	|  whoami, clear(ctrl+L) 
+cat: concatenate	|  cp: copy, cp xxx xxy	|  rm: remove, rm xxx
+cd: change directory .., /xxx/xx 	|  adduser, sudo adduser xxx  |  which ls
+ps: process status	| su: switch user	| id, hostname, uname -r, -a	| ip, ifconfig, netstat
+ss: session stuff	| who, who else in	| env: environment variable	| lsblk, hard drive stuff
+lsusb, lsof, open file	| --help, man	| uname - print system information, -a, -i, -r...
+apropos: you know what you want to do, you have an idea, but don't know which command
+mkdir		| ps -aux, check process, htop	| pstree	| kill [PID], pgrep {name}
+wc -l, count the number
+rm -f(forece) -d(dir) -r(recursive) 
+
+if you want check the distrobution:
+cat /etc/*-release
+
+/etc/*-release file – Print Linux distribution name and version.
+lsb_release command – Show Linux distribution-specific information.
+/proc/version file – Use this file to see Linux kernel version that is currently running.
+hostnamectl command – Display host name and Linux distro info on systemd based distros.
+
+filter content:
+more	less	head	tail	sort	grep	cut	tr(replace char)
+column -t		awk	sed
+
+sudo -s will let you get root access
+and sudo su - will also get to root user
+
+How can I find out what shell I am using
+echo "$SHELL"
+
+FD(file discreption): 0=stdin, 1=stdout, 2=stderr
+
+【>】for STDOUT, redirecting,  find /etc/ -name shadow 2> stderr.txt 1> stdout.txt
+【<】for STDIN, cat < stdout.txt
+【>>】for append
+When we use the greater-than sign (>) to redirect our STDOUT, a new file is automatically created if it does not already exist. If this file exists, it will be overwritten without asking for confirmation. If we want to append STDOUT to our existing file, we can use the double greater-than sign (>>).
+These characters can be seen as "direction" in the form of an arrow that tells us "from where" and "where to" the data should be redirected.
+
+Another way to redirect STDOUT is to use pipes (|). These are useful when we want to use the STDOUT from one program to be processed by another. 
+
+Running uname -a will print all information about the machine in a specific order: kernel name, hostname, the kernel release, kernel version, machine hardware name, and operating system. The -a flag will omit -p (processor type) and -i (hardware platform) if they are unknown.
+
+Suppose we want to print out the kernel release to search for potential kernel exploits quickly. We can type uname -r to obtain this information. With this info, we could go and search for "4.15.0-99-generic exploit," and the first result immediately appears useful to us.
+
+Logging In via SSH
+Secure Shell (SSH) refers to a protocol that allows clients to access and execute commands or actions on remote computers. On Linux-based hosts and servers running or another Unix-like operating system, SSH is one of the permanently installed standard tools and is the preferred choice for many administrators to configure and maintain a computer through remote access. It is an older and very proven protocol that does not require or offer a graphical user interface (GUI). For this reason, it works very efficiently and occupies very few resources. 
+
+ssh [username]@[IP address]
+
+===============================
+fast linux:
+cd ../.. will back two dir
+cd - will back to previous dir
+
+ctrl+a = first; ctrl+e = end; ctrl+u = del everything before cursor
+ctrl+y = recorver del content; ctrl+k = del everything after cursor
+ctrl+r = search command history
+alt+backspace = del last words
+sudo !! can let you do the previous command without typing again
+
+ls -al and ll, and la --> alias, we can creat our command
+	alias [new_command]="ls -al"
+	nano .bashrc --> put alias into the file, and your command will be here
+
+less = cat less  | tail = cat tail --> tail /var/log/auth.log
+tab tab, will list a lot dir/command
+
+tail -f /var/log/auth.log --> real time watching
+
+======================================
+helpful thing
+file ./*    --> shows all file content type in some dir(data-not readable / ASCII-readable)
+
+strings ./*    --> will display all string-type information in all file
+
+ls -lR --> will display all the dir and files inside the dir, very nice visualization
+
+\! means not(not readable --> \! -readable)
+
+2>/dev/null    --> put/hide/redirect all error output(permission denied) into garbage,
+
+cat data.txt | sort | uniq -c/-u will show the unique line, only appear once.(need sort first)
+
+base64 -d xxxxx --> base64 decryption
+tr 'a-zA-Z' 'n-za-mN-ZA-M'  -->  ROT13 decryption
+xxd -reverse [file] > xxx.xx  -->  hex dump to original
+file xxx.xx to see what type the data
+
+tar -xvf xxx
+gzip/bzip2 -d xxx (gunzip/bunzip)
+
+openssl s_client -connect xxxx:123456
+
+ssh allow us to excute command once the connection is done
+ssh xxxx -p xx "the commond"
+
+change .bashrc to log someone out immeditaly:
+add this at the last:
+	echo "some information"
+	exit 0
+
+to execute some thing, just run it by typing: ./xxxxx (chmod +x xxxx first)
+
+the "setuid" binary, will let you have temporary permission as other user
+like bandit20, adding [setuid_file] + the command you want, will act as bandit20
+The Unix and Linux access rights flags setuid and setgid (short for set user identity and set group identity)[1] allow users to run an executable with the file system permissions of the executable's owner or group respectively and to change behaviour in directories. They are often used to allow users on a computer system to run programs with temporarily elevated privileges to perform a specific task.
+
+find:
+1. -readable
+2. -executable
+3. -size (1033c, c for bytes)
+4. -user
+5. -group

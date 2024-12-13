@@ -1,0 +1,14 @@
+terminal is ... a device, that can interact with OS, send command
+and when we open a "terminal", we are open a frame that simulate the physic terminal
+
+and the user inter face, is the "shell", a shell is the tool to interact with linux kernel. there are many shell, like bash -- bourne-again shell, most common, powershell(pwsh), 
+
+find out which shell you using: ps command
+
+terminal --> shell(ui) --> OS
+
+rethge@RemixTheGame means:
+user@hostname
+
+$ means you are a user
+if you are a root user, you'll have a # sign

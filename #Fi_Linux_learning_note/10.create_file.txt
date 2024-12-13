@@ -1,0 +1,56 @@
+create file:
+1. touch [name_of_file.xxx]
+
+2. cat > [name_of_file.xxx], and write stuff inside, and ctrl+d to save
+    cat << EOF > [name_of_file.xxx] and you can do multiline editting, until typing "EOF" to end
+    or cat << something you like > [name_of_file.xxx] 
+
+3. echo "xxxxxxxxxxxx" > [name_of_file.xxx]
+
+create dir:
+mkdir [dir] (-p parent)
+
+move things and rename:
+mv [xxx.xxx] ./[dir_name]/[new_name_xxx.xxx] -->【./】means under current dir
+
+copy:
+cp [xxx.xxx] ./[dir]
+
+delete:
+rm [file]
+rmdir [dir]
+rm -r(recursive) [dir]
+rm -rf(force) [xxx]
+
+info of file:
+-rw------- 1 rethge rethge 7749 Mar 20 20:03 .bash_history
+               links | user | group | size(bytes) | date | name
+---------- is permission
+d--------- is dir, and without this, is a file
+-           rw-        r--        r--
+type | owner | group | others
+              u           g           o
+r: read, Octal Representation: 4
+w:write, Octal Representation: 2
+x: execute, Octal Representation: 1
+-: no permission, Octal Representation: 0
+
+We use the "chmod" utility to change or modify the file permissions.
+modify example:
+	chmod 700 temp.txt
+7 = 4+2+1 = rwx for owner
+0 = 0+0+0 = --- for group and others 
+	chmod u+rwx,g-rwx,o-rwx temp.txt
+remove permissions using a - sign, and added by +
+We can also use an '=' sign to set/overwrite permissions to the corresponding owner.
+	chmod u=rwx,g=x,w=x temp.txt
+
+more advance:
+SUID, 4
+SGID, 2
+sticky bit, 1
+	chmod 5700 temp.txt
+5 = 4+1 = SUID+sticky bit -->-rws-----T, T means sticky bit
+whoever executes the file will always execute as the owner of the file.
+only the owner of the file will be able to delete it
+	chmod u+srwx,g-rwx,o+t-rwx temp.txt

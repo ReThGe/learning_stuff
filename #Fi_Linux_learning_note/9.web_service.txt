@@ -1,0 +1,38 @@
+"python -m http.server [port]" will launch a local web server:
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+and typing localhost:8000, will open the web, and you can visit
+
+if under the dir, you have a index.html file, the web server will automaticly use it
+
+another web server, type: php -S 127.0.0.1:[port]
+the 127.0.0.1 is a loopback address, another way of saying localhost, always loop back
+to yourself, your home
+if you have file: favicon.ico, will use by default
+
+another web server:  npx http-server -p 8086
+another web server:  sudo systemctl start apache2, and open localhost:80
+or you should: sudo nano /etc/apache2/ports.conf --> change listen: 80 to something
+===========================
+(curl: client url, can download things, communicate with server, send things, test web)
+talk to the web server:  curl localhost:80 --> hi, this is the website information test
+curl -o coolweb localhost:80 --> download the web as name coolweb
+
+curl -I localhost:80 --> response header, who, when, where, to who...
+< HTTP/1.1 200 OK
+< Date: Wed, 20 Mar 2024 09:26:17 GMT
+< Server: Apache/2.4.52 (Ubuntu)
+< Last-Modified: Wed, 20 Mar 2024 09:02:02 GMT
+< ETag: "29af-61413d817cb37"
+< Accept-Ranges: bytes
+< Content-Length: 10671
+< Vary: Accept-Encoding
+< Content-Type: text/html
+<
+curl -v localhost:80 --> request header, 
+> GET / HTTP/1.1
+> Host: localhost
+> User-Agent: curl/7.81.0
+> Accept: */*
+>
+
+wget localhost:80 --> download web

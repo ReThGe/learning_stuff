@@ -1,0 +1,42 @@
+adduser xxx  vs  useradd(lazy, default shell is sh, and do not have a home, -m will create home)
+setting a passwd for a user: sudo passwd [user]
+change shell for a user: sudo usermod [user] --shell /bin/bash
+change name for a user: sudo usermod -l [new_name] [old_name]
+
+
+add a user into the sudoers file, to let the user can "sudo": 
+	sudo visudo -- only way to edit the sudoers file
+===========================
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+rethge ALL = ALL (or ALL = /sbin/useradd, this let the user send this command without sudo)
+
+to delet a user: sudo userdel [user]
+===========================
+creat a group:
+sudo groupadd xxx
+
+groups will show the current group of current user
+and you might want set a group that can "sudo":
+%testgroup ALL = NOPASSWD:ALL
+
+add a user to a group: 
+sudo usermod -aG testgroup test1
+
+remove user from a group:
+sudo gpasswd -d [user] [group]
+
+-G add to a group, but elimate other group
+-aG, -a = append
+===========================
+a useful dir: cat /etc/passwd, you can see many users with /nologin
+also /etc/group
+thor:x:1001:1001:,,,:/home/thor:/bin/bash
+
+the :x: means password, stored in a shadow file, at /etc/shadow:
+thor:$y$j9T$qd4stzWor3Y9uibEJKYwv0$h6TBY5Gk8lcYCg4aGl5kiutbbRnJQjdbwvAItzZwHg0:19800:0:99999:7:::
+passwd is in hash mode
+
+1001:1001: is the user id(uid) and the group id(gid), when you creat a user, you creat a user and a group
+/home/thor is the user's home dir
+/bin/bash is the default shell of this user

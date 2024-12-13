@@ -1,0 +1,27 @@
+everything in linux is a file
+===================
+bin: store the important binary file(like command)
+
+sbin: only admin-user can use(adduser)
+
+usr: user's file/stuff, also have ls, cat file, if you're not sure where your command binary file live, try "which ls", and you'll find out(/usr/bin/ls)
+
+local: might store binary file that you created
+
+lib: share libary, that command bin might share
+
+boot: files that needs to boot
+
+var: log files
+
+tmp: file that will go away when the system shutdown
+
+home: place that every user live in the system
+
+root: every linux has a root user, but won't have a home dir, its located in "root"
+
+dev: devices, the hardware like CD, RAM, hard drive(sda/vda) thing, as a "file"
+
+etc: etcetera, etsy, setting of your linux server, like network config
+
+opt, mnt and media: if you plug an usb, it mount to media, and mnt has your C:/D:/E:/wsl disk, temporary mount point for regular file system; opt save the optional files such as third-party tools
